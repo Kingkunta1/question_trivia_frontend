@@ -1,31 +1,90 @@
-class Questions{
-  debugger
-  constructor(){
-    this.questions = [];
-    this.adapter = new QuesAdapter();
-    this.bindEventListeners();
-    this.fetchAndLoadQuestions
-  }
+console.log("here")
 
-    fetchAndLoadQuestions(){
-      this.adapter.getQuestions()
-        .then(questions => {
-          console.log(questions)
-           questions.results.forEach(function(question)
-           {console.log(question.question)})
-           //
+class Question{
+  // debugger
+  constructor(question){
+    this.id = question.id
+    this.correct_anwser = question.correct_anwser
+    this.incorrect_answer = question.incorrect_answer
+    this.question = question.question
+    Question.all.push(this)
+    }
+    // debugger
+//
+ renderCurrentQuestion() {
+   return
+    let innerQuestion = document.getElementById("question-text").innerText = question.question;
+    // produces the string question
 
-              // or
+    const incorrectOptions = question.incorrect_answer.replace(/]|"|"|/g,"").substring(1).split(',');
+    // produces an array of incorrect answers
+    // console.log(incorrectOptions)
+    let correctAnswer = question.correct_anwser;
+    // displays the right choice
 
-          questions.map( question => {
-            // individual objects
-            const realQuestion = {
+    let answerSpace = Math.floor(Math.random() * 3) + 1;
+    // returns a random integer between 0 -> 4
 
-              question:question.question
-            };
+    let currentScore = calculateScore(correctCount, questionCounter)
+    // setting player's current score to  a percent
 
-        })
-    })
+    const optionsArray = incorrectOptions.splice(answerSpace -1,0,correctAnswer);
+    // randomizing choice selections
+
+
+    incorrectOptions.forEach((choice,index) => {
+      question ['choice' + (index +1)] = choice;
+    });
+    // iterating throughout the options
+
+    console.log(incorrectOptions)
+
+    choiceArray.forEach(choice =>{
+      const number = choice.dataset['number']
+      choice.innerText = question['choice' + number]
+    });
+
+  	choiceArray.forEach((choice) => {
+		 choice.addEventListener("click",function(e){
+       console.log('clicked on an option')
+
+		    if(e.target.innerText == correctAnswer){
+                console.log("sup");
+                ++correctCount;
+                getQuestions(++questionCounter)
+                currentScore = calculateScore(correctCount, questionCounter)
+                console.log(questionCounter)
+                document.getElementById("score-output").innerText = `Score ${currentScore} `+"%" ;
+                // alert("Correct")
+
+
+        }
+        else{
+            document.getElementById("score-output").innerText = `Score ${currentScore}`+"%";
+            // alert("Try Again");
+            this.question.isEnded()
+
+        }
+ 		   });
+       choice.addEventListener("click", function(e){
+         if(e.target.innerText == correctAnswer){
+           getQuestions(++questionCounter);
+         }
+         else{
+           alert("Try Again")
+         }
+       })
+     });
+
+
+
+      function isEnded(){
+       this.questionCounter === this.question.length
+        }
+
+};
+
 
 }
-}
+
+Question.all = [];
