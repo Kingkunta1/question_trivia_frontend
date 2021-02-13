@@ -11,13 +11,13 @@ let correctCount = 0;
 
 quesButton.addEventListener("click",function(e){
   getQuestions(++questionCounter);
-  },hideshow);
+  });
 
-function hideshow() {
+// function hideshow() {
   const hiddenDiv = document.getElementById('hidden-div')
     hiddenDiv.style.display = 'block';
-      hiddenDiv.style.display = 'none'
-    }
+      // hiddenDiv.style.display = 'none'
+    // }
 
 // hideshow()
 
@@ -30,7 +30,9 @@ function getQuestions(id){
       // debugger
     let newQuestion = new Question(question);
 // creating a new instance of Question : i.e Clss Question
-     new Question.renderCurrentQuestion();
+    // document.getElementById('container') +=
+    // debugger
+    Question.renderCurrentQuestion(question);
   })
   .catch((error) => {
 

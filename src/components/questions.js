@@ -11,7 +11,7 @@ class Question{
     }
     // debugger
 //
- renderCurrentQuestion() {
+   static renderCurrentQuestion() {
    return
     let innerQuestion = document.getElementById("question-text").innerText = question.question;
     // produces the string question
@@ -50,7 +50,7 @@ class Question{
 
 		    if(e.target.innerText == correctAnswer){
                 console.log("sup");
-                ++correctCount;
+                ++correctCount;X
                 getQuestions(++questionCounter)
                 currentScore = calculateScore(correctCount, questionCounter)
                 console.log(questionCounter)
