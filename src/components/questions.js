@@ -11,8 +11,12 @@ class Question{
     }
     // debugger
 //
-   static renderCurrentQuestion() {
+   renderCurrentQuestion() {
+     // debugger
+     console.log(this)
+     // current object being called on this
    return
+
     let innerQuestion = document.getElementById("question-text").innerText = question.question;
     // produces the string question
 
@@ -23,10 +27,15 @@ class Question{
     // displays the right choice
 
     let answerSpace = Math.floor(Math.random() * 3) + 1;
+
+
     // returns a random integer between 0 -> 4
 
     let currentScore = calculateScore(correctCount, questionCounter)
     // setting player's current score to  a percent
+    function calculateScore(totalCorrect, numQuestions ) {
+      return ((correctCount/questionCounter) * 100).toFixed(1);
+    }
 
     const optionsArray = incorrectOptions.splice(answerSpace -1,0,correctAnswer);
     // randomizing choice selections

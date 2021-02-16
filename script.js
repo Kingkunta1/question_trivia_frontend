@@ -6,7 +6,6 @@ const choiceArray = Array.from(document.getElementsByClassName("choice-text"));
 let availableOptions = [];
 let currentQuestion = {};
 let questionCounter = 0;
-let correctCount = 0;
 
 
 quesButton.addEventListener("click",function(e){
@@ -31,10 +30,10 @@ function getQuestions(id){
     let newQuestion = new Question(question);
 // creating a new instance of Question : i.e Clss Question
     // document.getElementById('container') +=
-    // debugger
-    Question.renderCurrentQuestion(question);
+     newQuestion.renderCurrentQuestion();
   })
   .catch((error) => {
+    // debugger
 
   console.log( "hello", error)
   reDirect()
@@ -61,10 +60,6 @@ function reDirect() { 
 // const saveButton = document.getElementById('save-button');
 //  So if all the questions have gone through I then want to load the form ?
 // How would I load the form after questions have been answered?
-
-function calculateScore(totalCorrect, numQuestions ) {
-  return ((correctCount/questionCounter) * 100).toFixed(1);
-}
 
 
 
