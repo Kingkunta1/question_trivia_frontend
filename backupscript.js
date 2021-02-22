@@ -306,4 +306,4 @@ function reDirect() { 
 // }
 // //  I need 2 other AJAX requests
 // PUT and Delete!!
-}
+} 

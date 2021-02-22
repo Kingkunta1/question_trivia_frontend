@@ -94,13 +94,21 @@ function setScore(options = {}) {
     }
 }
 
+
 function deleteQuestion(){
-  const deleteButton = document.getElementById('Delete-question');
-  fetch(`http://localhost:3000/api/v1/questions${question.id}`,{
-  method: 'DELETE'
-  headers: {
-    'Content-Type': 'application/json'
-    }
+  const deleteButton = document.getElementById('Delete-question').addEventListener('click', ()=> {
+    fetch(`http://localhost:3000/api/v1/questions/`,{
+      method:'DELETE',
+      headers: {
+        'Content-type':'application/json'
+      }
+      .then(res=>res.json())
+      .then(json =>console.log(json))
+      .catch(err=>console.log(err))
+    })
   })
-  .then(resp => console.log(resp)) 
-  }
+}
+
+
+
+  deleteQuestion()
