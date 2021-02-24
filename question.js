@@ -1,6 +1,6 @@
 class Question{
   // initiates instances of question
-  constructor(id, correct_anwser,incorrect_answer,question ) 
+  constructor(id, correct_anwser,incorrect_answer,question ) 9
 
 
 renderQuestion() => this.question

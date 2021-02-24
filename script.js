@@ -10,6 +10,7 @@ document.getElementById('show-ques').addEventListener('click', () => {
         .then(()=> nextQuestion());
         // gets the questions from the open ended api
         // Get fetch request
+        // debugger
 });
 
 document.getElementById('get-new-questions').addEventListener('click', () => {
@@ -94,7 +95,7 @@ function setScore(options = {}) {
     }
 }
 
-
+// debugger
 function deleteQuestion(){
   const deleteButton = document.getElementById('Delete-question').addEventListener('click', ()=> {
     fetch(`http://localhost:3000/api/v1/questions/`,{
@@ -111,4 +112,4 @@ function deleteQuestion(){
 
 
 
-  deleteQuestion()
+  // deleteQuestion()
