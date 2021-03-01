@@ -2,6 +2,7 @@ let questions = {};
 let currentQuestion;
 let numTries = numCorrect = 0;
 
+
 document.getElementById('show-ques').addEventListener('click', () => {
     fetch('http://localhost:3000/api/v1/questions')
         .then(res=>res.json())
@@ -12,6 +13,7 @@ document.getElementById('show-ques').addEventListener('click', () => {
         // Get fetch request
         // debugger
 });
+
 
 document.getElementById('get-new-questions').addEventListener('click', () => {
     fetch('http://localhost:3000/api/v1/new_questions')
@@ -72,7 +74,6 @@ function nextQuestion() {
     })
 
 }
-
 function handleClick(choice) {
     numTries++;
     const chosenAnswer = document.getElementById(choice).innerText;
@@ -98,7 +99,7 @@ function setScore(options = {}) {
 // debugger
 function deleteQuestion(){
   const deleteButton = document.getElementById('Delete-question').addEventListener('click', ()=> {
-    fetch(`http://localhost:3000/api/v1/questions/`,{
+    fetch(`http://localhost:3000/api/v1/questions/${question.id}`,{
       method:'DELETE',
       headers: {
         'Content-type':'application/json'
@@ -112,4 +113,4 @@ function deleteQuestion(){
 
 
 
-  // deleteQuestion()
+  deleteQuestion()
