@@ -1,3 +1,13 @@
+
+// What is the overall process
+// deleting a question
+// What is the cause of this
+//  clicking action
+// At what point should the cause happen
+// After the questions have loaded
+
+
+
 let questions = {};
 let currentQuestion;
 let numTries = numCorrect = 0;
@@ -99,7 +109,7 @@ function setScore(options = {}) {
 // debugger
 function deleteQuestion(){
   const deleteButton = document.getElementById('Delete-question').addEventListener('click', ()=> {
-    fetch(`http://localhost:3000/api/v1/questions/${question.id}`,{
+    fetch(`http://localhost:3000/api/v1/questions/${id}`,{
       method:'DELETE',
       headers: {
         'Content-type':'application/json'
@@ -108,7 +118,9 @@ function deleteQuestion(){
       .then(json =>console.log(json))
       .catch(err=>console.log(err))
     })
+
   })
+  // debugger
 }
 
 
