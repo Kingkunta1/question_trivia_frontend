@@ -11,6 +11,7 @@
 let questions = {};
 let currentQuestion;
 let numTries = numCorrect = 0;
+let baseUrl = 'http://localhost:3000';
 
 
 document.getElementById('show-ques').addEventListener('click', () => {
@@ -43,15 +44,18 @@ document.getElementById('get-new-questions').addEventListener('click', () => {
 })
 
 function enableUI(enable=true) {
+
     const goButton = document.getElementById('hidden-div');
     const welcome = document.getElementById('welcome-container');
     const questions = document.getElementById('question-container');
     const getNewButton = document.getElementById('get-new-questions');
+    const deleteButton = document.getElementById('Delete-question').addEventListener('click',deleteQuestion)
 
     goButton.style.display = enable ? "none" : "block";
     welcome.style.display = enable ? "none" : "block";
     questions.style.display = enable ? "block" : "none";
     getNewButton.style.display = enable ? "none" : "inline";
+    deleteButton.style.display = enable ? "none": "inline";
 }
 
 function nextQuestion() {
@@ -107,22 +111,20 @@ function setScore(options = {}) {
 }
 
 // debugger
+
+
 function deleteQuestion(){
-  const deleteButton = document.getElementById('Delete-question').addEventListener('click', ()=> {
-    fetch(`http://localhost:3000/api/v1/questions/${id}`,{
+  console.log("deleting question")
+    fetch(baseUrl + '/questions/' + questions[currentQuestion].id),{
+      // currentQuestion = # that identifies the question id
       method:'DELETE',
       headers: {
         'Content-type':'application/json'
       }
-      .then(res=>res.json())
-      .then(json =>console.log(json))
-      .catch(err=>console.log(err))
-    })
-
-  })
-  // debugger
-}
+    }
+    console.log("question deleted")
+    nextQuestion()
+  }
 
 
-
-  deleteQuestion()
+  // deleteQuestion()

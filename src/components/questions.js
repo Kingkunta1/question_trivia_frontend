@@ -9,6 +9,20 @@ class Question{
     this.question = question.question
     Question.all.push(this)
     }
+
+
+    static getQuestions(id){
+      // console.log("hello")
+      document.getElementById('show-ques').addEventListener('click', () => {
+      fetch(`http://localhost:3000/api/v1/questions/${id}`)
+      .then(res => res.json())
+      .then(question =>{
+        console.log(question);
+        // questions.forEach(question => {renderCurrentQuestion(question)} )
+        renderCurrentQuestion(question);
+
+      })
+    })
     // debugger
 //
 //    renderCurrentQuestion() {
