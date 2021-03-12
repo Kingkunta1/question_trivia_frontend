@@ -6,8 +6,6 @@
 // At what point should the cause happen
 // After the questions have loaded
 
-
-
 let questions = {};
 let currentQuestion;
 let numTries = numCorrect = 0;
@@ -49,13 +47,12 @@ function enableUI(enable=true) {
     const welcome = document.getElementById('welcome-container');
     const questions = document.getElementById('question-container');
     const getNewButton = document.getElementById('get-new-questions');
-    const deleteButton = document.getElementById('Delete-question').addEventListener('click',deleteQuestion)
 
     goButton.style.display = enable ? "none" : "block";
     welcome.style.display = enable ? "none" : "block";
     questions.style.display = enable ? "block" : "none";
     getNewButton.style.display = enable ? "none" : "inline";
-    deleteButton.style.display = enable ? "none": "inline";
+    // deleteButton.style.display = enable ? "none": "inline";
 }
 
 function nextQuestion() {
@@ -114,6 +111,7 @@ function setScore(options = {}) {
 
 
 function deleteQuestion(){
+  const deleteButton = document.getElementById('Delete-question').addEventListener('click',deleteQuestion)
   console.log("deleting question")
     fetch(baseUrl + '/questions/' + questions[currentQuestion].id),{
       // currentQuestion = # that identifies the question id
@@ -128,3 +126,4 @@ function deleteQuestion(){
 
 
   // deleteQuestion()
+//
