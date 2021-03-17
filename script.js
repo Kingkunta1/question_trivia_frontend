@@ -47,12 +47,13 @@ function enableUI(enable=true) {
     const welcome = document.getElementById('welcome-container');
     const questions = document.getElementById('question-container');
     const getNewButton = document.getElementById('get-new-questions');
+    const deleteButton = document.getElementById('Delete-question');
 
     goButton.style.display = enable ? "none" : "block";
     welcome.style.display = enable ? "none" : "block";
     questions.style.display = enable ? "block" : "none";
     getNewButton.style.display = enable ? "none" : "inline";
-    // deleteButton.style.display = enable ? "none": "inline";
+    deleteButton.style.display = enable ? "block": "inline";
 }
 
 function nextQuestion() {
@@ -110,20 +111,46 @@ function setScore(options = {}) {
 // debugger
 
 
-function deleteQuestion(){
-  const deleteButton = document.getElementById('Delete-question').addEventListener('click',deleteQuestion)
-  console.log("deleting question")
-    fetch(baseUrl + '/questions/' + questions[currentQuestion].id),{
-      // currentQuestion = # that identifies the question id
-      method:'DELETE',
-      headers: {
-        'Content-type':'application/json'
-      }
-    }
-    console.log("question deleted")
-    nextQuestion()
+// function deleteQuestion(){
+  // const deleteButton = document.getElementById('Delete-question').addEventListener('click',deleteQuestion);
+  // console.log("deleting question");
+  //   fetch(baseUrl + '/questions/' + questions[currentQuestion].id,{
+  //     // currentQuestion = # that identifies the question id
+  //     method:'DELETE',
+  //   })
+  //   .then(resp => {
+  //     return resp.json();
+  //   })
+  //   .then(data =>{
+  //     this.parentNode.remove();
+  //   })
+  //   console.log("question deleted")
+  //   // nextQuestion()
+  // }
+
+
+  function deleteQuestion(){
+
+    document.getElementById('Delete-question').addEventListener('click', () => {
+      fetch(baseUrl + '/questions/' + questions[currentQuestion].id,{
+        // currentQuestion = # that identifies the question id
+        method:'DELETE',
+      })
+      .then(resp => {
+        return resp.json();
+      })
+      .then(()=> enableUI())
+      .then(data =>{
+        this.parentNode.remove();
+      })
+      console.log("question deleted")
+      nextQuestion()
+    });
   }
 
+  deleteQuestion()
+          // gets the questions from the open ended api
+          // Get fetch request
+          // debugger
 
-  // deleteQuestion()
 //
